@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import { ChefHat, Utensils, Coffee, Globe, ShoppingBag, FileText, Heart, User } from "lucide-react";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
 import RestaurantsPage from "./pages/RestaurantsPage";
+import CoffeeCartsMap from "./pages/CoffeeCartsMap";
 
 const queryClient = new QueryClient();
 
