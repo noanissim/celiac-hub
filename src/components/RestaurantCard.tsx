@@ -38,7 +38,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments, onC
           variant="ghost"
           size="icon"
           className="shrink-0"
-          onClick={() => setLiked(!liked)}
+          onClick={(e) => { e.stopPropagation(); setLiked(!liked); }}
           aria-label={liked ? "Remove from favorites" : "Add to favorites"}
         >
           <Heart className={`h-5 w-5 transition-colors ${liked ? "fill-destructive text-destructive" : "text-muted-foreground"}`} />
