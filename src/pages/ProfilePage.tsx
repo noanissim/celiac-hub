@@ -88,6 +88,7 @@ export default function ProfilePage() {
             <TabsTrigger value="restaurants" className="gap-1.5"><Utensils className="h-3.5 w-3.5" /> Restaurants ({favRestaurants.length})</TabsTrigger>
             <TabsTrigger value="recipes" className="gap-1.5"><ChefHat className="h-3.5 w-3.5" /> Recipes ({favRecipes.length})</TabsTrigger>
             <TabsTrigger value="carts" className="gap-1.5"><Coffee className="h-3.5 w-3.5" /> Coffee ({favCarts.length})</TabsTrigger>
+            <TabsTrigger value="articles" className="gap-1.5"><FileText className="h-3.5 w-3.5" /> Articles ({favArticles.length})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="restaurants">
