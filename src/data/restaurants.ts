@@ -65,9 +65,9 @@ function enrichRestaurant(r: Omit<Restaurant, 'images' | 'openingHours'> & { ope
   };
 }
 
-export const restaurants: Restaurant[] = [
+const rawRestaurants: Omit<Restaurant, 'images' | 'openingHours'>[] = [
   // === ITALIAN ===
-  enrichRestaurant({
+  {
     id: "amore-mio",
     name: "Amore Mio",
     category: "italian",
