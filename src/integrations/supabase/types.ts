@@ -14,7 +14,171 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      articles: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          published_date: string | null
+          source_url: string | null
+          summary: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          published_date?: string | null
+          source_url?: string | null
+          summary?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          published_date?: string | null
+          source_url?: string | null
+          summary?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      coffee_carts: {
+        Row: {
+          address: string
+          created_at: string
+          description: string | null
+          gf_options: string | null
+          id: string
+          lat: number
+          lng: number
+          location: string
+          menu_link: string | null
+          name: string
+          name_he: string | null
+          opening_hours: string | null
+          updated_at: string
+        }
+        Insert: {
+          address: string
+          created_at?: string
+          description?: string | null
+          gf_options?: string | null
+          id?: string
+          lat: number
+          lng: number
+          location: string
+          menu_link?: string | null
+          name: string
+          name_he?: string | null
+          opening_hours?: string | null
+          updated_at?: string
+        }
+        Update: {
+          address?: string
+          created_at?: string
+          description?: string | null
+          gf_options?: string | null
+          id?: string
+          lat?: number
+          lng?: number
+          location?: string
+          menu_link?: string | null
+          name?: string
+          name_he?: string | null
+          opening_hours?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      favorites: {
+        Row: {
+          created_at: string
+          id: string
+          item_id: string
+          item_type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_id: string
+          item_type: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_id?: string
+          item_type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      restaurants: {
+        Row: {
+          address: string
+          category: string
+          city: string
+          created_at: string
+          description: string | null
+          gf_level: string
+          id: string
+          image_urls: string[] | null
+          kosher: boolean
+          menu_url: string | null
+          name: string
+          opening_hours: Json | null
+          price: string
+          rating: number
+          review_count: number | null
+          updated_at: string
+          website_url: string | null
+        }
+        Insert: {
+          address: string
+          category: string
+          city: string
+          created_at?: string
+          description?: string | null
+          gf_level: string
+          id?: string
+          image_urls?: string[] | null
+          kosher?: boolean
+          menu_url?: string | null
+          name: string
+          opening_hours?: Json | null
+          price: string
+          rating?: number
+          review_count?: number | null
+          updated_at?: string
+          website_url?: string | null
+        }
+        Update: {
+          address?: string
+          category?: string
+          city?: string
+          created_at?: string
+          description?: string | null
+          gf_level?: string
+          id?: string
+          image_urls?: string[] | null
+          kosher?: boolean
+          menu_url?: string | null
+          name?: string
+          opening_hours?: Json | null
+          price?: string
+          rating?: number
+          review_count?: number | null
+          updated_at?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
