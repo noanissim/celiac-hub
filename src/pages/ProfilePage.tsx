@@ -19,6 +19,7 @@ export default function ProfilePage() {
   const { data: restaurants = [] } = useRestaurants();
   const { data: recipes = [] } = useRecipes();
   const { data: carts = [] } = useCoffeeCarts();
+  const { data: articles = [] } = useArticles();
 
   if (loading) {
     return (
