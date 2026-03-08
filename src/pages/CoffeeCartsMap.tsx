@@ -5,6 +5,7 @@ import { useCoffeeCarts, CoffeeCart } from "@/hooks/useCoffeeCarts";
 import { Coffee, MapPin, Clock, Wheat, ExternalLink, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { FavoriteButton } from "@/components/FavoriteButton";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
