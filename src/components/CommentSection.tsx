@@ -14,6 +14,7 @@ export function CommentSection({ restaurantId }: { restaurantId: string }) {
   const { mutate: addReview, isPending } = useAddReview();
   const [newComment, setNewComment] = useState("");
   const [rating, setRating] = useState(0);
+  const MAX_REVIEW_LENGTH = 2000;
 
   const handleSubmit = () => {
     if (!newComment.trim()) return;
