@@ -2,7 +2,7 @@ import { Heart, MapPin, Star } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { Restaurant } from "@/data/restaurants";
+import type { Restaurant } from "@/hooks/useRestaurants";
 import { useState } from "react";
 
 interface RestaurantCardProps {

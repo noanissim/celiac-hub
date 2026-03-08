@@ -1,9 +1,9 @@
-import { MapPin, Clock, ExternalLink, FileText, Star, X } from "lucide-react";
+import { MapPin, Clock, ExternalLink, FileText, Star } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import type { Restaurant } from "@/data/restaurants";
+import type { Restaurant } from "@/hooks/useRestaurants";
 
 interface RestaurantDetailModalProps {
   restaurant: Restaurant | null;
@@ -30,19 +30,13 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
         style={{ boxShadow: "0 25px 60px -12px hsl(25 30% 15% / 0.25)" }}>
         <DialogTitle className="sr-only">{restaurant.name}</DialogTitle>
 
-        {/* Image Carousel */}
         {images.length > 0 && (
           <div className="relative">
             <Carousel className="w-full" opts={{ loop: true }}>
               <CarouselContent>
                 {images.map((src, i) => (
                   <CarouselItem key={i}>
-                    <img
-                      src={src}
-                      alt={`${restaurant.name} photo ${i + 1}`}
-                      className="h-64 w-full object-cover sm:h-72"
-                      loading="lazy"
-                    />
+                    <img src={src} alt={`${restaurant.name} photo ${i + 1}`} className="h-64 w-full object-cover sm:h-72" loading="lazy" />
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -52,17 +46,11 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
           </div>
         )}
 
-        {/* Content */}
         <div className="space-y-5 px-6 pb-6 pt-2">
-          {/* Header */}
           <div>
             <div className="flex items-start justify-between gap-3">
-              <h2 className="text-2xl font-bold text-foreground" style={{ fontFamily: "var(--font-display)" }}>
-                {restaurant.name}
-              </h2>
-              <Badge variant={restaurant.gfLevel === "100% GF" ? "default" : "secondary"} className="shrink-0 text-xs">
-                {restaurant.gfLevel}
-              </Badge>
+              <h2 className="text-2xl font-bold text-foreground" style={{ fontFamily: "var(--font-display)" }}>{restaurant.name}</h2>
+              <Badge variant={restaurant.gfLevel === "100% GF" ? "default" : "secondary"} className="shrink-0 text-xs">{restaurant.gfLevel}</Badge>
             </div>
             <div className="mt-1 flex items-center gap-3 text-sm text-muted-foreground">
               <span>{categoryLabel[restaurant.category]}</span>
@@ -78,13 +66,11 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
 
           <p className="text-sm leading-relaxed text-foreground/80">{restaurant.description}</p>
 
-          {/* Info Grid */}
           <div className="space-y-3 rounded-xl border bg-muted/40 p-4">
             <div className="flex items-start gap-2.5 text-sm">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
               <span className="text-foreground">{restaurant.address}</span>
             </div>
-
             {Object.keys(hours).length > 0 && (
               <div className="flex items-start gap-2.5 text-sm">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -100,33 +86,27 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
             )}
           </div>
 
-          {/* Action Buttons */}
           <div className="flex gap-3">
-            {restaurant.website ? (
+            {restaurant.websiteUrl ? (
               <Button asChild className="flex-1 transition-transform hover:scale-[1.02]">
-                <a href={restaurant.website} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="h-4 w-4" />
-                  Visit Website
+                <a href={restaurant.websiteUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="h-4 w-4" /> Visit Website
                 </a>
               </Button>
             ) : (
               <Button variant="secondary" className="flex-1" disabled>
-                <ExternalLink className="h-4 w-4" />
-                Contact for Details
+                <ExternalLink className="h-4 w-4" /> Contact for Details
               </Button>
             )}
-
             {restaurant.menuUrl ? (
               <Button asChild variant="outline" className="flex-1 transition-transform hover:scale-[1.02]">
                 <a href={restaurant.menuUrl} target="_blank" rel="noopener noreferrer">
-                  <FileText className="h-4 w-4" />
-                  View Menu
+                  <FileText className="h-4 w-4" /> View Menu
                 </a>
               </Button>
             ) : (
               <Button variant="outline" className="flex-1" disabled>
-                <FileText className="h-4 w-4" />
-                Contact for Menu
+                <FileText className="h-4 w-4" /> Contact for Menu
               </Button>
             )}
           </div>

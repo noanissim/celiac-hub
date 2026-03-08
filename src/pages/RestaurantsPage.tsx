@@ -1,13 +1,17 @@
 import { useState, useMemo } from "react";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RestaurantCard } from "@/components/RestaurantCard";
 import { CommentSection } from "@/components/CommentSection";
 import { RestaurantDetailModal } from "@/components/RestaurantDetailModal";
-import { restaurants, allCities } from "@/data/restaurants";
-import type { Restaurant, RestaurantCategory, GFLevel, PriceLevel } from "@/data/restaurants";
+import { useRestaurants, useAllCities } from "@/hooks/useRestaurants";
+import type { Restaurant } from "@/hooks/useRestaurants";
+
+type RestaurantCategory = "italian" | "asian" | "meat" | "cafe";
+type GFLevel = "100% GF" | "GF Options";
+type PriceLevel = "₪" | "₪₪" | "₪₪₪";
 
 export default function RestaurantsPage() {
   const [search, setSearch] = useState("");
@@ -20,9 +24,12 @@ export default function RestaurantsPage() {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
+  const { data: restaurants = [], isLoading } = useRestaurants();
+  const { data: allCities = [] } = useAllCities();
+
   const filtered = useMemo(() => {
     return restaurants.filter((r) => {
-      if (search && !r.name.toLowerCase().includes(search.toLowerCase()) && !r.description.toLowerCase().includes(search.toLowerCase())) return false;
+      if (search && !r.name.toLowerCase().includes(search.toLowerCase()) && !(r.description || "").toLowerCase().includes(search.toLowerCase())) return false;
       if (category !== "all" && r.category !== category) return false;
       if (gfLevel !== "all" && r.gfLevel !== gfLevel) return false;
       if (kosher === "yes" && !r.kosher) return false;
@@ -31,7 +38,7 @@ export default function RestaurantsPage() {
       if (city !== "all" && r.city !== city) return false;
       return true;
     });
-  }, [search, category, gfLevel, kosher, price, city]);
+  }, [search, category, gfLevel, kosher, price, city, restaurants]);
 
   const toggleComments = (id: string) => setOpenComments(openComments === id ? null : id);
 
@@ -46,19 +53,9 @@ export default function RestaurantsPage() {
       <div className="mb-4 flex gap-2">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            placeholder="Search restaurants..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="pl-9"
-          />
+          <Input placeholder="Search restaurants..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
         </div>
-        <Button
-          variant={showFilters ? "default" : "outline"}
-          size="icon"
-          onClick={() => setShowFilters(!showFilters)}
-          aria-label="Toggle filters"
-        >
+        <Button variant={showFilters ? "default" : "outline"} size="icon" onClick={() => setShowFilters(!showFilters)} aria-label="Toggle filters">
           <SlidersHorizontal className="h-4 w-4" />
         </Button>
       </div>
@@ -76,7 +73,6 @@ export default function RestaurantsPage() {
               <SelectItem value="cafe">☕ Café</SelectItem>
             </SelectContent>
           </Select>
-
           <Select value={gfLevel} onValueChange={(v) => setGfLevel(v as GFLevel | "all")}>
             <SelectTrigger><SelectValue placeholder="GF Level" /></SelectTrigger>
             <SelectContent>
@@ -85,7 +81,6 @@ export default function RestaurantsPage() {
               <SelectItem value="GF Options">GF Options</SelectItem>
             </SelectContent>
           </Select>
-
           <Select value={kosher} onValueChange={(v) => setKosher(v as "all" | "yes" | "no")}>
             <SelectTrigger><SelectValue placeholder="Kosher" /></SelectTrigger>
             <SelectContent>
@@ -94,7 +89,6 @@ export default function RestaurantsPage() {
               <SelectItem value="no">Not Kosher</SelectItem>
             </SelectContent>
           </Select>
-
           <Select value={price} onValueChange={(v) => setPrice(v as PriceLevel | "all")}>
             <SelectTrigger><SelectValue placeholder="Price" /></SelectTrigger>
             <SelectContent>
@@ -104,7 +98,6 @@ export default function RestaurantsPage() {
               <SelectItem value="₪₪₪">₪₪₪</SelectItem>
             </SelectContent>
           </Select>
-
           <Select value={city} onValueChange={setCity}>
             <SelectTrigger><SelectValue placeholder="City" /></SelectTrigger>
             <SelectContent>
@@ -122,21 +115,30 @@ export default function RestaurantsPage() {
         Showing {filtered.length} of {restaurants.length} restaurants
       </p>
 
-      {/* Restaurant Grid */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        {filtered.map((r) => (
-          <div key={r.id}>
-            <RestaurantCard restaurant={r} onToggleComments={toggleComments} showComments={openComments === r.id} onClick={() => setSelectedRestaurant(r)} />
-            {openComments === r.id && (
-              <div className="mt-2">
-                <CommentSection restaurantId={r.id} />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Loading */}
+      {isLoading && (
+        <div className="flex items-center justify-center py-16">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      )}
 
-      {filtered.length === 0 && (
+      {/* Restaurant Grid */}
+      {!isLoading && (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {filtered.map((r) => (
+            <div key={r.id}>
+              <RestaurantCard restaurant={r} onToggleComments={toggleComments} showComments={openComments === r.id} onClick={() => setSelectedRestaurant(r)} />
+              {openComments === r.id && (
+                <div className="mt-2">
+                  <CommentSection restaurantId={r.id} />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {!isLoading && filtered.length === 0 && (
         <div className="py-16 text-center">
           <p className="text-lg text-muted-foreground">No restaurants found matching your filters.</p>
           <Button variant="link" onClick={() => { setSearch(""); setCategory("all"); setGfLevel("all"); setKosher("all"); setPrice("all"); setCity("all"); }}>
