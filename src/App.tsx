@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { ChefHat, Utensils, Coffee, Globe, ShoppingBag, FileText, Heart, User } from "lucide-react";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
+import RestaurantsPage from "./pages/RestaurantsPage";
 
 const queryClient = new QueryClient();
 
