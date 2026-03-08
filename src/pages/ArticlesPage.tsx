@@ -18,6 +18,7 @@ function ArticleCard({ article }: { article: Article }) {
   return (
     <article className="group rounded-xl border bg-card p-6 transition-all hover:shadow-md hover:border-primary/20">
       <div className="flex items-start gap-4">
+        <FavoriteButton itemId={article.id} itemType="article" className="order-last mt-0.5" />
         <div className={`mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${isResearch ? "bg-primary/10 text-primary" : "bg-accent/30 text-accent-foreground"}`}>
           <FileText className="h-5 w-5" />
         </div>

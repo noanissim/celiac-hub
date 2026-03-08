@@ -28,10 +28,11 @@ function CartDetailPanel({ cart, onClose }: { cart: CoffeeCart; onClose: () => v
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <Coffee className="h-5 w-5" />
           </div>
-          <div>
+          <div className="flex-1">
             <h3 className="font-bold text-foreground leading-tight">{cart.name}</h3>
             {cart.nameHe && <p className="text-sm text-muted-foreground">{cart.nameHe}</p>}
           </div>
+          <FavoriteButton itemId={cart.id} itemType="cart" />
         </div>
         <div className="flex items-start gap-2.5 mb-3">
           <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />

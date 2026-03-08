@@ -135,6 +135,21 @@ export default function ProfilePage() {
               </div>
             )}
           </TabsContent>
+
+          <TabsContent value="articles">
+            {favArticles.length === 0 ? (
+              <p className="text-sm text-muted-foreground py-6 text-center">No favorite articles yet.</p>
+            ) : (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {favArticles.map((a) => (
+                  <Card key={a.id} className="cursor-pointer hover:shadow-md transition-all" onClick={() => navigate("/research")}>
+                    <CardHeader className="pb-1"><h3 className="font-bold text-foreground text-sm">{a.title}</h3></CardHeader>
+                    <CardContent className="pt-0 text-sm text-muted-foreground">{a.sourceName}</CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
         </Tabs>
       )}
     </div>
