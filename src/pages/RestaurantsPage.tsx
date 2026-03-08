@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { Search, SlidersHorizontal, Loader2 } from "lucide-react";
+import { Search, SlidersHorizontal } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
