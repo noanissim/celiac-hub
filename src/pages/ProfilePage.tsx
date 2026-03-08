@@ -45,6 +45,7 @@ export default function ProfilePage() {
   const favRestaurants = restaurants.filter((r) => favorites.some((f) => f.item_id === r.id && f.item_type === "restaurant"));
   const favRecipes = recipes.filter((r) => favorites.some((f) => f.item_id === r.id && f.item_type === "recipe"));
   const favCarts = carts.filter((c) => favorites.some((f) => f.item_id === c.id && f.item_type === "cart"));
+  const favArticles = articles.filter((a) => favorites.some((f) => f.item_id === a.id && f.item_type === "article"));
 
   const initials = profile?.displayName
     ? profile.displayName.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()
