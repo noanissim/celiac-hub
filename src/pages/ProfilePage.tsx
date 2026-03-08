@@ -1,4 +1,4 @@
-import { User, Heart, Utensils, Coffee, ChefHat, LogOut } from "lucide-react";
+import { User, Heart, Utensils, Coffee, ChefHat, LogOut, FileText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { useRestaurants } from "@/hooks/useRestaurants";
 import { useRecipes } from "@/hooks/useRecipes";
 import { useCoffeeCarts } from "@/hooks/useCoffeeCarts";
+import { useArticles } from "@/hooks/useArticles";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage() {
@@ -18,6 +19,7 @@ export default function ProfilePage() {
   const { data: restaurants = [] } = useRestaurants();
   const { data: recipes = [] } = useRecipes();
   const { data: carts = [] } = useCoffeeCarts();
+  const { data: articles = [] } = useArticles();
 
   if (loading) {
     return (
@@ -43,6 +45,7 @@ export default function ProfilePage() {
   const favRestaurants = restaurants.filter((r) => favorites.some((f) => f.item_id === r.id && f.item_type === "restaurant"));
   const favRecipes = recipes.filter((r) => favorites.some((f) => f.item_id === r.id && f.item_type === "recipe"));
   const favCarts = carts.filter((c) => favorites.some((f) => f.item_id === c.id && f.item_type === "cart"));
+  const favArticles = articles.filter((a) => favorites.some((f) => f.item_id === a.id && f.item_type === "article"));
 
   const initials = profile?.displayName
     ? profile.displayName.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()
@@ -86,6 +89,7 @@ export default function ProfilePage() {
             <TabsTrigger value="restaurants" className="gap-1.5"><Utensils className="h-3.5 w-3.5" /> Restaurants ({favRestaurants.length})</TabsTrigger>
             <TabsTrigger value="recipes" className="gap-1.5"><ChefHat className="h-3.5 w-3.5" /> Recipes ({favRecipes.length})</TabsTrigger>
             <TabsTrigger value="carts" className="gap-1.5"><Coffee className="h-3.5 w-3.5" /> Coffee ({favCarts.length})</TabsTrigger>
+            <TabsTrigger value="articles" className="gap-1.5"><FileText className="h-3.5 w-3.5" /> Articles ({favArticles.length})</TabsTrigger>
           </TabsList>
 
           <TabsContent value="restaurants">
@@ -127,6 +131,21 @@ export default function ProfilePage() {
                   <Card key={c.id} className="cursor-pointer hover:shadow-md transition-all" onClick={() => navigate("/coffee-carts")}>
                     <CardHeader className="pb-1"><h3 className="font-bold text-foreground">{c.name}</h3></CardHeader>
                     <CardContent className="pt-0 text-sm text-muted-foreground">{c.address}</CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="articles">
+            {favArticles.length === 0 ? (
+              <p className="text-sm text-muted-foreground py-6 text-center">No favorite articles yet.</p>
+            ) : (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {favArticles.map((a) => (
+                  <Card key={a.id} className="cursor-pointer hover:shadow-md transition-all" onClick={() => navigate("/research")}>
+                    <CardHeader className="pb-1"><h3 className="font-bold text-foreground text-sm">{a.title}</h3></CardHeader>
+                    <CardContent className="pt-0 text-sm text-muted-foreground">{a.sourceName}</CardContent>
                   </Card>
                 ))}
               </div>
