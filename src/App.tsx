@@ -10,6 +10,7 @@ import { ChefHat, Utensils, Coffee, Globe, ShoppingBag, FileText, Heart, User } 
 import { PlaceholderPage } from "./pages/PlaceholderPage";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import CoffeeCartsMap from "./pages/CoffeeCartsMap";
+import ArticlesPage from "./pages/ArticlesPage";
 
 const queryClient = new QueryClient();
 
