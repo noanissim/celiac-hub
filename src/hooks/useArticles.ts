@@ -8,6 +8,7 @@ export interface Article {
   sourceUrl: string | null;
   publishedDate: string | null;
   category: "research" | "news";
+  createdAt: string;
 }
 
 export function useArticles(category?: "research" | "news") {
