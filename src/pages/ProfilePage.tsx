@@ -54,6 +54,10 @@ export default function ProfilePage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
+      <Helmet>
+        <title>My Profile — CeliacHub</title>
+        <meta name="description" content="View your CeliacHub profile and manage your favorite restaurants, recipes, coffee carts, and articles." />
+      </Helmet>
       {/* Profile header */}
       <Card className="mb-8">
         <CardContent className="flex items-center gap-5 p-6">
