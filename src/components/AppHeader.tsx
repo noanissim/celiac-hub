@@ -1,4 +1,5 @@
-import { LogIn, User, Heart, LogOut } from "lucide-react";
+import { LogIn, User, Heart, LogOut, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -15,6 +16,7 @@ import { lovable } from "@/integrations/lovable/index";
 
 export function AppHeader() {
   const { user, profile, loading, signOut } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleSignIn = async () => {
@@ -41,7 +43,17 @@ export function AppHeader() {
         </span>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="text-muted-foreground hover:text-foreground"
+          aria-label="Toggle dark mode"
+        >
+          <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
+        </Button>
         {loading ? (
           <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
         ) : user ? (
