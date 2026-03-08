@@ -23,7 +23,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments, onC
   };
 
   return (
-    <Card className="group relative transition-shadow hover:shadow-lg" style={{ boxShadow: "var(--card-hover-shadow)" }}>
+    <Card className="group relative cursor-pointer transition-all hover:shadow-lg hover:scale-[1.01]" style={{ boxShadow: "var(--card-hover-shadow)" }} onClick={onClick}>
       <CardHeader className="flex flex-row items-start justify-between gap-2 pb-2">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap">
