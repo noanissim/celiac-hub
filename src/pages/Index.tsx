@@ -35,8 +35,9 @@ const Index = () => {
             Community-powered &amp; celiac-safe
           </div>
           <h1 className="mb-4 text-3xl font-bold leading-tight text-foreground md:text-5xl">
-            We're all in this together having{" "}
-            <span className="text-primary">Gluten Free</span> life
+            We're all in this together!
+            <br />
+            having <span className="text-primary">Gluten Free</span> life
           </h1>
           <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
             Whether you're newly diagnosed, a seasoned celiac, or a parent navigating GF life for your child — CeliacHub brings the community, tools, and knowledge together in one place.
