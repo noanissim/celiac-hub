@@ -60,9 +60,9 @@ const Index = () => {
       {/* Community Section */}
       <section className="mx-auto w-full max-w-4xl px-6 pb-16">
         <div className="rounded-2xl border bg-card p-8 text-center">
-          <h2 className="mb-3 text-xl font-bold text-foreground">Built by the community, for the community</h2>
+          <h2 className="mb-3 text-xl font-bold text-foreground">The Story Behind CeliacHub</h2>
           <p className="text-muted-foreground">
-            CeliacHub is a growing platform made with love by people who understand the daily challenges of living gluten-free. Sign in to save your favorites, contribute reviews, and join the conversation.
+            Hi, I'm Noa Nissim — a full-stack developer and a celiac since the age of 18. After my diagnosis, I spent years searching for one place that brings together everything a celiac needs: recipes, safe restaurants, travel tips, and the latest research. I never found it — so I built it. CeliacHub was created using Lovable, with a simple mission: to make gluten-free living easier, more accessible, and a little less lonely. This is my gift to the community that helped me along the way. 💛
           </p>
         </div>
       </section>
