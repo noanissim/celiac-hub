@@ -5,19 +5,19 @@ import {
   Globe,
   ShoppingBag,
   FileText,
-  Wheat,
-} from "lucide-react";
+  Wheat } from
+"lucide-react";
 import { CategoryCard } from "@/components/CategoryCard";
 import heroImage from "@/assets/hero-illustration.jpg";
 
 const categories = [
-  { title: "Recipes", description: "Delicious gluten-free meals for every occasion", icon: ChefHat, url: "/recipes" },
-  { title: "Restaurants", description: "Celiac-safe dining spots near you", icon: Utensils, url: "/restaurants" },
-  { title: "Coffee Carts", description: "Find GF-friendly coffee on the go", icon: Coffee, url: "/coffee-carts" },
-  { title: "International Guide", description: "Eat safely while traveling abroad", icon: Globe, url: "/international" },
-  { title: "Shops & Deals", description: "Best products and exclusive discounts", icon: ShoppingBag, url: "/shops" },
-  { title: "Research Articles", description: "Latest science and medical insights", icon: FileText, url: "/research" },
-];
+{ title: "Recipes", description: "Delicious gluten-free meals for every occasion", icon: ChefHat, url: "/recipes" },
+{ title: "Restaurants", description: "Celiac-safe dining spots near you", icon: Utensils, url: "/restaurants" },
+{ title: "Coffee Carts", description: "Find GF-friendly coffee on the go", icon: Coffee, url: "/coffee-carts" },
+{ title: "International Guide", description: "Eat safely while traveling abroad", icon: Globe, url: "/international" },
+{ title: "Shops & Deals", description: "Best products and exclusive discounts", icon: ShoppingBag, url: "/shops" },
+{ title: "Research Articles", description: "Latest science and medical insights", icon: FileText, url: "/research" }];
+
 
 const Index = () => {
   return (
@@ -26,14 +26,14 @@ const Index = () => {
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
+          style={{ backgroundImage: `url(${heroImage})` }} />
+        
         <div className="absolute inset-0" style={{ background: "var(--hero-gradient)" }} />
         <div className="relative mx-auto max-w-4xl px-6 py-16 text-center md:py-24">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border bg-card/80 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm">
-            <Wheat className="h-4 w-4 text-primary" />
-            Community-powered &amp; celiac-safe
-          </div>
+          
+
+
+          
           <h1 className="mb-4 text-3xl font-bold leading-tight text-foreground md:text-5xl">
             We're all in this together!
             <br />
@@ -51,9 +51,9 @@ const Index = () => {
           Explore the Hub
         </h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {categories.map((cat, i) => (
-            <CategoryCard key={cat.title} {...cat} delay={i * 80} />
-          ))}
+          {categories.map((cat, i) =>
+          <CategoryCard key={cat.title} {...cat} delay={i * 80} />
+          )}
         </div>
       </section>
 
@@ -66,8 +66,8 @@ const Index = () => {
           </p>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
