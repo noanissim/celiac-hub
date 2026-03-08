@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useArticles, useArticleSources, type Article, type SortField, type SortDir } from "@/hooks/useArticles";
+import { FavoriteButton } from "@/components/FavoriteButton";
 
 function isNew(createdAt: string | null) {
   if (!createdAt) return false;
