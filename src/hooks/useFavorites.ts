@@ -18,6 +18,11 @@ export function useFavorites(userId: string | undefined) {
   });
 }
 
+export function useIsFavorited(userId: string | undefined, itemId: string, itemType: ItemType) {
+  const { data: favorites } = useFavorites(userId);
+  return favorites?.some((f) => f.item_id === itemId && f.item_type === itemType) ?? false;
+}
+
 export function useToggleFavorite() {
   const queryClient = useQueryClient();
 
