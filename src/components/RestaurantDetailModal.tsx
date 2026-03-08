@@ -3,6 +3,8 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { FavoriteButton } from "@/components/FavoriteButton";
+import { CommentSection } from "@/components/CommentSection";
 import type { Restaurant } from "@/hooks/useRestaurants";
 
 interface RestaurantDetailModalProps {
@@ -50,7 +52,10 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
           <div>
             <div className="flex items-start justify-between gap-3">
               <h2 className="text-2xl font-bold text-foreground" style={{ fontFamily: "var(--font-display)" }}>{restaurant.name}</h2>
-              <Badge variant={restaurant.gfLevel === "100% GF" ? "default" : "secondary"} className="shrink-0 text-xs">{restaurant.gfLevel}</Badge>
+              <div className="flex items-center gap-1">
+                <FavoriteButton itemId={restaurant.id} itemType="restaurant" />
+                <Badge variant={restaurant.gfLevel === "100% GF" ? "default" : "secondary"} className="shrink-0 text-xs">{restaurant.gfLevel}</Badge>
+              </div>
             </div>
             <div className="mt-1 flex items-center gap-3 text-sm text-muted-foreground">
               <span>{categoryLabel[restaurant.category]}</span>
@@ -104,6 +109,9 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
               </Button>
             )}
           </div>
+
+          {/* Reviews section */}
+          <CommentSection restaurantId={restaurant.id} />
         </div>
       </DialogContent>
     </Dialog>
