@@ -11,6 +11,7 @@ import { PlaceholderPage } from "./pages/PlaceholderPage";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import CoffeeCartsMap from "./pages/CoffeeCartsMap";
 import ArticlesPage from "./pages/ArticlesPage";
+import RecipesPage from "./pages/RecipesPage";
 
 const queryClient = new QueryClient();
 
