@@ -87,19 +87,11 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
           </div>
 
           <div className="flex gap-3">
-            {restaurant.websiteUrl ? (
-              <Button asChild className="flex-1 transition-transform hover:scale-[1.02]">
-                <a href={restaurant.websiteUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="h-4 w-4" /> Visit Website
-                </a>
-              </Button>
-            ) : (
-              <Button asChild variant="secondary" className="flex-1 transition-transform hover:scale-[1.02]">
-                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' ' + restaurant.address)}`} target="_blank" rel="noopener noreferrer">
-                  <MapPin className="h-4 w-4" /> View on Map
-                </a>
-              </Button>
-            )}
+            <Button asChild className="flex-1 transition-transform hover:scale-[1.02]">
+              <a href={restaurant.websiteUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' ' + restaurant.address)}`} target="_blank" rel="noopener noreferrer">
+                <MapPin className="h-4 w-4" /> View on Google Maps
+              </a>
+            </Button>
             {restaurant.menuUrl ? (
               <Button asChild variant="outline" className="flex-1 transition-transform hover:scale-[1.02]">
                 <a href={restaurant.menuUrl} target="_blank" rel="noopener noreferrer">
