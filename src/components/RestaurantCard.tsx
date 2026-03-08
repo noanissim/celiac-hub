@@ -65,7 +65,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments, onC
 
         <p className="text-sm text-foreground/80">{restaurant.description}</p>
 
-        <Button variant="ghost" size="sm" className="w-full text-primary" onClick={() => onToggleComments(restaurant.id)}>
+        <Button variant="ghost" size="sm" className="w-full text-primary" onClick={(e) => { e.stopPropagation(); onToggleComments(restaurant.id); }}>
           {showComments ? "Hide Comments" : "💬 Community Comments"}
         </Button>
       </CardContent>
