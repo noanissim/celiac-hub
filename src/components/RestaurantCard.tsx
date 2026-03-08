@@ -1,9 +1,9 @@
-import { Heart, MapPin, Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { FavoriteButton } from "@/components/FavoriteButton";
 import type { Restaurant } from "@/hooks/useRestaurants";
-import { useState } from "react";
 
 interface RestaurantCardProps {
   restaurant: Restaurant;
@@ -13,8 +13,6 @@ interface RestaurantCardProps {
 }
 
 export function RestaurantCard({ restaurant, onToggleComments, showComments, onClick }: RestaurantCardProps) {
-  const [liked, setLiked] = useState(false);
-
   const categoryLabel: Record<string, string> = {
     italian: "🇮🇹 Italian",
     asian: "🍜 Asian",
@@ -34,15 +32,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments, onC
           </div>
           <p className="mt-1 text-sm text-muted-foreground">{categoryLabel[restaurant.category]}</p>
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="shrink-0"
-          onClick={(e) => { e.stopPropagation(); setLiked(!liked); }}
-          aria-label={liked ? "Remove from favorites" : "Add to favorites"}
-        >
-          <Heart className={`h-5 w-5 transition-colors ${liked ? "fill-destructive text-destructive" : "text-muted-foreground"}`} />
-        </Button>
+        <FavoriteButton itemId={restaurant.id} itemType="restaurant" />
       </CardHeader>
 
       <CardContent className="space-y-3 pt-0">
