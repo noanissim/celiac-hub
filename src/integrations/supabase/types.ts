@@ -119,6 +119,60 @@ export type Database = {
         }
         Relationships: []
       }
+      recipes: {
+        Row: {
+          category: string
+          cook_time: string | null
+          created_at: string
+          description: string | null
+          difficulty: string | null
+          id: string
+          image_url: string | null
+          prep_time: string | null
+          servings: string | null
+          source_logo_url: string | null
+          source_name: string
+          source_url: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          cook_time?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty?: string | null
+          id?: string
+          image_url?: string | null
+          prep_time?: string | null
+          servings?: string | null
+          source_logo_url?: string | null
+          source_name: string
+          source_url: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          cook_time?: string | null
+          created_at?: string
+          description?: string | null
+          difficulty?: string | null
+          id?: string
+          image_url?: string | null
+          prep_time?: string | null
+          servings?: string | null
+          source_logo_url?: string | null
+          source_name?: string
+          source_url?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       restaurants: {
         Row: {
           address: string
