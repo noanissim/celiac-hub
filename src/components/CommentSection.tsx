@@ -103,6 +103,7 @@ export function CommentSection({ restaurantId }: { restaurantId: string }) {
               placeholder="Share your experience..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
+              maxLength={MAX_REVIEW_LENGTH}
               className="min-h-[60px] flex-1"
             />
             <Button onClick={handleSubmit} disabled={isPending || !newComment.trim()} className="self-end">
