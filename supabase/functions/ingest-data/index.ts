@@ -57,7 +57,8 @@ Deno.serve(async (req) => {
       .select();
 
     if (error) {
-      return new Response(JSON.stringify({ error: error.message }), {
+      console.error("Supabase upsert error:", error);
+      return new Response(JSON.stringify({ error: "Failed to process records" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
