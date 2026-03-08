@@ -1,0 +1,133 @@
+export interface CoffeeCart {
+  id: string;
+  name: string;
+  nameHe: string;
+  location: string;
+  address: string;
+  lat: number;
+  lng: number;
+  hours: string;
+  gfOptions: string;
+  description: string;
+  menuLink?: string;
+}
+
+export const coffeeCarts: CoffeeCart[] = [
+  {
+    id: "garden-coffee-ramat-hasharon",
+    name: "Garden Coffee",
+    nameHe: "גן קפה",
+    location: "Ramat HaSharon",
+    address: "Gan Yarok, Ramat HaSharon",
+    lat: 32.1461,
+    lng: 34.8394,
+    hours: "Sun–Thu 7:00–18:00, Fri 7:00–14:00",
+    gfOptions: "GF cookies, pastries, desserts. Some branches offer GF bread sandwiches.",
+    description: "Popular garden coffee cart with a warm atmosphere and gluten-free baked goods.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "garden-coffee-beer-yaakov",
+    name: "Garden Coffee",
+    nameHe: "גן קפה",
+    location: "Be'er Ya'akov",
+    address: "Gan Olives, Be'er Ya'akov",
+    lat: 31.9414,
+    lng: 34.8353,
+    hours: "Sun–Thu 7:00–18:00, Fri 7:00–14:00",
+    gfOptions: "GF cookies, pastries, and desserts available.",
+    description: "Garden Coffee branch in Be'er Ya'akov park with GF treats.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "olives-coffee",
+    name: "Olives Coffee",
+    nameHe: "אוליבס",
+    location: "Be'er Ya'akov",
+    address: "Olives Park, Be'er Ya'akov",
+    lat: 31.9390,
+    lng: 34.8310,
+    hours: "Sun–Thu 7:30–17:30, Fri 7:30–13:00",
+    gfOptions: "GF desserts available. Some drinks come with GF granola and cookies.",
+    description: "Cozy coffee cart surrounded by olive trees, with gluten-free snack options.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "rose-cafe",
+    name: "Rose Café",
+    nameHe: "רוז קפה",
+    location: "Arugot",
+    address: "HaMeyasdim 28, Arugot",
+    lat: 31.7340,
+    lng: 34.7280,
+    hours: "Sun–Thu 8:00–17:00, Fri 8:00–13:00",
+    gfOptions: "GF cakes and cookies. Celiac-friendly by reviews.",
+    description: "Charming café with homemade gluten-free cakes and cookies.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "anita-gelato",
+    name: "Anita Gelato",
+    nameHe: "אניטה",
+    location: "Kfar HaRif",
+    address: "HaRimon 73, Kfar HaRif",
+    lat: 31.7780,
+    lng: 34.7530,
+    hours: "Sun–Thu 10:00–22:00, Fri 10:00–15:00, Sat 19:00–23:00",
+    gfOptions: "Most gelato flavors are GF. GF cones available at most branches.",
+    description: "Famous gelato spot with a coffee cart — most flavors are naturally gluten-free.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "vivero-cafe",
+    name: "Vivero Café",
+    nameHe: "ויברו קפה",
+    location: "Lev HaSharon",
+    address: "Hayei Bar Lev 62, Lev HaSharon",
+    lat: 32.3310,
+    lng: 34.8860,
+    hours: "Sun–Thu 7:00–17:00, Fri 7:00–13:00",
+    gfOptions: "GF cookies available. Some sandwiches can be adapted.",
+    description: "A plant nursery café in the heart of the Sharon area with GF cookie options.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "mellow",
+    name: "Mellow",
+    nameHe: "מלואו",
+    location: "Moshav Pardesim",
+    address: "Moshav Pardesim",
+    lat: 32.2080,
+    lng: 34.8450,
+    hours: "Sun–Thu 8:00–17:00, Fri 8:00–13:00",
+    gfOptions: "GF cookies available. Some desserts are vegan & GF.",
+    description: "Relaxed moshav café with vegan and gluten-free dessert options.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "pick-and-go",
+    name: "Pick & Go",
+    nameHe: "פיק אנד גו",
+    location: "Kfar Hitim",
+    address: "Sderot HaShkedia, Kfar Hitim",
+    lat: 32.8020,
+    lng: 35.4570,
+    hours: "Sun–Thu 7:00–16:00, Fri 7:00–13:00",
+    gfOptions: "GF snacks available. Some desserts are adapted.",
+    description: "Quick-service coffee cart in the Galilee with GF snack options.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+  {
+    id: "didi-cafe",
+    name: "DiDi Café",
+    nameHe: "דידי קפה",
+    location: "Kadmon",
+    address: "Etzel, Kadmon",
+    lat: 32.4700,
+    lng: 34.9200,
+    hours: "Sun–Thu 7:30–17:00, Fri 7:30–13:00",
+    gfOptions: "GF cookies available. Some baked goods come in adapted versions.",
+    description: "Neighborhood coffee cart with GF cookie and pastry options.",
+    menuLink: "https://coffeetrail.co.il",
+  },
+];
