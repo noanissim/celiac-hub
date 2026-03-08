@@ -19,6 +19,7 @@ export default function RestaurantsPage() {
   const [city, setCity] = useState<string>("all");
   const [openComments, setOpenComments] = useState<string | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
   const filtered = useMemo(() => {
     return restaurants.filter((r) => {
