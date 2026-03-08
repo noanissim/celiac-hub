@@ -145,6 +145,12 @@ export default function RestaurantsPage() {
           </Button>
         </div>
       )}
+
+      <RestaurantDetailModal
+        restaurant={selectedRestaurant}
+        open={!!selectedRestaurant}
+        onOpenChange={(open) => { if (!open) setSelectedRestaurant(null); }}
+      />
     </div>
   );
 }
