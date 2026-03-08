@@ -150,7 +150,7 @@ export default function CoffeeCartsMap() {
                 <span className="text-xs">{cart.location}</span>
                 <br />
                 <button
-                  className="mt-1 text-xs text-blue-600 underline"
+                  className="mt-1 text-xs text-primary underline"
                   onClick={() => setSelectedCart(cart)}
                 >
                   View details →
