@@ -94,8 +94,10 @@ export function RestaurantDetailModal({ restaurant, open, onOpenChange }: Restau
                 </a>
               </Button>
             ) : (
-              <Button variant="secondary" className="flex-1" disabled>
-                <ExternalLink className="h-4 w-4" /> Contact for Details
+              <Button asChild variant="secondary" className="flex-1 transition-transform hover:scale-[1.02]">
+                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' ' + restaurant.address)}`} target="_blank" rel="noopener noreferrer">
+                  <MapPin className="h-4 w-4" /> View on Map
+                </a>
               </Button>
             )}
             {restaurant.menuUrl ? (
