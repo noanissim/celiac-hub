@@ -12,7 +12,7 @@ interface RestaurantCardProps {
   onClick: () => void;
 }
 
-export function RestaurantCard({ restaurant, onToggleComments, showComments }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant, onToggleComments, showComments, onClick }: RestaurantCardProps) {
   const [liked, setLiked] = useState(false);
 
   const categoryLabel: Record<string, string> = {
