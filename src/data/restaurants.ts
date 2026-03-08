@@ -583,4 +583,6 @@ const rawRestaurants: Omit<Restaurant, 'images' | 'openingHours'>[] = [
   },
 ];
 
+export const restaurants: Restaurant[] = rawRestaurants.map(r => enrichRestaurant(r as any));
+
 export const allCities = [...new Set(restaurants.map((r) => r.city))].sort();
