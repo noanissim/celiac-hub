@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RestaurantCard } from "@/components/RestaurantCard";
 import { CommentSection } from "@/components/CommentSection";
+import { RestaurantDetailModal } from "@/components/RestaurantDetailModal";
 import { restaurants, allCities } from "@/data/restaurants";
+import type { Restaurant, RestaurantCategory, GFLevel, PriceLevel } from "@/data/restaurants";
 import type { RestaurantCategory, GFLevel, PriceLevel } from "@/data/restaurants";
 
 export default function RestaurantsPage() {
