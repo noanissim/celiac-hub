@@ -16,6 +16,7 @@ import { lovable } from "@/integrations/lovable/index";
 
 export function AppHeader() {
   const { user, profile, loading, signOut } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleSignIn = async () => {
