@@ -9,9 +9,10 @@ interface RestaurantCardProps {
   restaurant: Restaurant;
   onToggleComments: (id: string) => void;
   showComments: boolean;
+  onClick: () => void;
 }
 
-export function RestaurantCard({ restaurant, onToggleComments, showComments }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant, onToggleComments, showComments, onClick }: RestaurantCardProps) {
   const [liked, setLiked] = useState(false);
 
   const categoryLabel: Record<string, string> = {
@@ -22,7 +23,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments }: R
   };
 
   return (
-    <Card className="group relative transition-shadow hover:shadow-lg" style={{ boxShadow: "var(--card-hover-shadow)" }}>
+    <Card className="group relative cursor-pointer transition-all hover:shadow-lg hover:scale-[1.01]" style={{ boxShadow: "var(--card-hover-shadow)" }} onClick={onClick}>
       <CardHeader className="flex flex-row items-start justify-between gap-2 pb-2">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 flex-wrap">
@@ -37,7 +38,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments }: R
           variant="ghost"
           size="icon"
           className="shrink-0"
-          onClick={() => setLiked(!liked)}
+          onClick={(e) => { e.stopPropagation(); setLiked(!liked); }}
           aria-label={liked ? "Remove from favorites" : "Add to favorites"}
         >
           <Heart className={`h-5 w-5 transition-colors ${liked ? "fill-destructive text-destructive" : "text-muted-foreground"}`} />
@@ -64,7 +65,7 @@ export function RestaurantCard({ restaurant, onToggleComments, showComments }: R
 
         <p className="text-sm text-foreground/80">{restaurant.description}</p>
 
-        <Button variant="ghost" size="sm" className="w-full text-primary" onClick={() => onToggleComments(restaurant.id)}>
+        <Button variant="ghost" size="sm" className="w-full text-primary" onClick={(e) => { e.stopPropagation(); onToggleComments(restaurant.id); }}>
           {showComments ? "Hide Comments" : "💬 Community Comments"}
         </Button>
       </CardContent>

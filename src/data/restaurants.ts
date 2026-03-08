@@ -14,9 +14,58 @@ export interface Restaurant {
   gfLevel: GFLevel;
   kosher: boolean;
   price: PriceLevel;
+  website?: string;
+  menuUrl?: string;
+  openingHours?: Record<string, string>;
+  images?: string[];
 }
 
-export const restaurants: Restaurant[] = [
+const defaultHours: Record<string, string> = {
+  Sunday: "10:00 – 23:00",
+  Monday: "10:00 – 23:00",
+  Tuesday: "10:00 – 23:00",
+  Wednesday: "10:00 – 23:00",
+  Thursday: "10:00 – 23:00",
+  Friday: "10:00 – 15:00",
+  Saturday: "20:00 – 23:00",
+};
+
+const cuisineImages: Record<RestaurantCategory, string[]> = {
+  italian: [
+    "https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=800&q=80",
+    "https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=800&q=80",
+    "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80",
+    "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&q=80",
+  ],
+  asian: [
+    "https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=800&q=80",
+    "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&q=80",
+    "https://images.unsplash.com/photo-1563612116625-3012372fccce?w=800&q=80",
+    "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&q=80",
+  ],
+  meat: [
+    "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80",
+    "https://images.unsplash.com/photo-1558030006-450675393462?w=800&q=80",
+    "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80",
+    "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&q=80",
+  ],
+  cafe: [
+    "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
+    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
+    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80",
+    "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&q=80",
+  ],
+};
+
+function enrichRestaurant(r: Omit<Restaurant, 'images' | 'openingHours'> & { openingHours?: Record<string, string>; images?: string[] }): Restaurant {
+  return {
+    ...r,
+    openingHours: r.openingHours || defaultHours,
+    images: r.images || cuisineImages[r.category],
+  };
+}
+
+const rawRestaurants: Omit<Restaurant, 'images' | 'openingHours'>[] = [
   // === ITALIAN ===
   {
     id: "amore-mio",
@@ -533,5 +582,7 @@ export const restaurants: Restaurant[] = [
     price: "₪",
   },
 ];
+
+export const restaurants: Restaurant[] = rawRestaurants.map(r => enrichRestaurant(r as any));
 
 export const allCities = [...new Set(restaurants.map((r) => r.city))].sort();
