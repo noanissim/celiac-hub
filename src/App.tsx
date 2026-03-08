@@ -24,7 +24,7 @@ const App = () => (
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/recipes" element={<PlaceholderPage title="Recipes" icon={ChefHat} description="Discover and share delicious gluten-free recipes for every meal." />} />
+            <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/restaurants" element={<RestaurantsPage />} />
             <Route path="/coffee-carts" element={<CoffeeCartsMap />} />
             <Route path="/international" element={<PlaceholderPage title="International Guide" icon={Globe} description="Travel tips and dining cards for eating GF around the world." />} />
