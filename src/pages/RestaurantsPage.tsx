@@ -127,7 +127,7 @@ export default function RestaurantsPage() {
       <div className="grid gap-4 sm:grid-cols-2">
         {filtered.map((r) => (
           <div key={r.id}>
-            <RestaurantCard restaurant={r} onToggleComments={toggleComments} showComments={openComments === r.id} />
+            <RestaurantCard restaurant={r} onToggleComments={toggleComments} showComments={openComments === r.id} onClick={() => setSelectedRestaurant(r)} />
             {openComments === r.id && (
               <div className="mt-2">
                 <CommentSection restaurantId={r.id} />
