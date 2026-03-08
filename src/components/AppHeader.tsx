@@ -43,7 +43,17 @@ export function AppHeader() {
         </span>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="text-muted-foreground hover:text-foreground"
+          aria-label="Toggle dark mode"
+        >
+          <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
+        </Button>
         {loading ? (
           <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
         ) : user ? (
