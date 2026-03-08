@@ -18,6 +18,10 @@ export function CommentSection({ restaurantId }: { restaurantId: string }) {
 
   const handleSubmit = () => {
     if (!newComment.trim()) return;
+    if (newComment.trim().length > MAX_REVIEW_LENGTH) {
+      toast.error(`Review must be under ${MAX_REVIEW_LENGTH} characters.`);
+      return;
+    }
     if (!user) {
       toast("Please sign in to post a review 💛");
       return;
