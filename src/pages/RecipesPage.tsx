@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { ChefHat, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -31,6 +32,10 @@ export default function RecipesPage() {
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8">
+      <Helmet>
+        <title>Gluten-Free Recipes — CeliacHub</title>
+        <meta name="description" content="Browse delicious gluten-free recipes for breakfast, mains, desserts, and snacks — all credited to their original creators." />
+      </Helmet>
       {/* Header */}
       <div className="mb-8 text-center">
         <ChefHat className="mx-auto mb-2 h-10 w-10 text-primary" />

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import {
   ChefHat,
   Utensils,
@@ -22,6 +23,10 @@ const categories = [
 const Index = () => {
   return (
     <div className="flex flex-col">
+      <Helmet>
+        <title>CeliacHub — Gluten-Free Restaurants, Recipes & More in Israel</title>
+        <meta name="description" content="Your one-stop hub for gluten-free living in Israel. Find celiac-safe restaurants, GF recipes, coffee carts, research articles, and community tips." />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div

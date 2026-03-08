@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useCoffeeCarts, CoffeeCart } from "@/hooks/useCoffeeCarts";
@@ -104,6 +105,10 @@ export default function CoffeeCartsMap() {
 
   return (
     <div className="relative h-[calc(100vh-4rem)] w-full">
+      <Helmet>
+        <title>Gluten-Free Coffee Carts Map — CeliacHub</title>
+        <meta name="description" content="Find gluten-free friendly coffee carts across Israel on an interactive map. View locations, menus, and GF options." />
+      </Helmet>
       <div className="absolute top-4 left-4 z-[1000] flex items-center gap-2 rounded-xl border bg-card/95 backdrop-blur px-4 py-2.5 shadow-lg">
         <Coffee className="h-5 w-5 text-primary" />
         <div>

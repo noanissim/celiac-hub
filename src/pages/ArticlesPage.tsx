@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FileText, ExternalLink, Calendar, Tag, ArrowUpDown, Filter, Building2 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
@@ -89,6 +90,10 @@ export default function ArticlesPage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8">
+      <Helmet>
+        <title>Celiac Disease Research & News — CeliacHub</title>
+        <meta name="description" content="Stay up to date with the latest celiac disease research, gluten-free news, and medical insights from trusted sources." />
+      </Helmet>
       {/* Header */}
       <div className="mb-8 text-center">
         <FileText className="mx-auto mb-2 h-10 w-10 text-primary" />

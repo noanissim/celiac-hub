@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
@@ -45,6 +46,10 @@ export default function RestaurantsPage() {
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-8">
+      <Helmet>
+        <title>Gluten-Free Restaurants & Cafés — CeliacHub</title>
+        <meta name="description" content="Discover celiac-safe restaurants and cafés in Israel. Filter by city, category, GF level, kosher status, and price range." />
+      </Helmet>
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-foreground md:text-4xl">Restaurants & Cafés</h1>
         <p className="mt-2 text-muted-foreground">Find celiac-safe dining spots reviewed by the community</p>
