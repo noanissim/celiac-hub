@@ -9,6 +9,7 @@ interface RestaurantCardProps {
   restaurant: Restaurant;
   onToggleComments: (id: string) => void;
   showComments: boolean;
+  onClick: () => void;
 }
 
 export function RestaurantCard({ restaurant, onToggleComments, showComments }: RestaurantCardProps) {
