@@ -8,6 +8,7 @@ export interface Article {
   sourceUrl: string | null;
   publishedDate: string | null;
   category: "research" | "news";
+  createdAt: string;
 }
 
 export function useArticles(category?: "research" | "news") {
@@ -28,6 +29,7 @@ export function useArticles(category?: "research" | "news") {
         sourceUrl: r.source_url,
         publishedDate: r.published_date,
         category: r.category as "research" | "news",
+        createdAt: r.created_at,
       }));
     },
   });
