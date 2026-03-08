@@ -1,4 +1,4 @@
-import { User, Heart, Utensils, Coffee, ChefHat, LogOut } from "lucide-react";
+import { User, Heart, Utensils, Coffee, ChefHat, LogOut, FileText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { useRestaurants } from "@/hooks/useRestaurants";
 import { useRecipes } from "@/hooks/useRecipes";
 import { useCoffeeCarts } from "@/hooks/useCoffeeCarts";
+import { useArticles } from "@/hooks/useArticles";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage() {
