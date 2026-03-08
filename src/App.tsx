@@ -28,7 +28,7 @@ const App = () => (
             <Route path="/coffee-carts" element={<CoffeeCartsMap />} />
             <Route path="/international" element={<PlaceholderPage title="International Guide" icon={Globe} description="Travel tips and dining cards for eating GF around the world." />} />
             <Route path="/shops" element={<PlaceholderPage title="Shops & Deals" icon={ShoppingBag} description="Browse the best gluten-free products and exclusive deals." />} />
-            <Route path="/research" element={<PlaceholderPage title="Research Articles" icon={FileText} description="Stay updated with the latest celiac disease research." />} />
+            <Route path="/research" element={<ArticlesPage />} />
             <Route path="/favorites" element={<PlaceholderPage title="Favorites" icon={Heart} description="Your saved recipes, restaurants, and articles in one place." />} />
             <Route path="/profile" element={<PlaceholderPage title="Profile" icon={User} description="Manage your account and preferences." />} />
             <Route path="*" element={<NotFound />} />

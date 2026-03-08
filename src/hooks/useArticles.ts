@@ -29,6 +29,7 @@ export function useArticles(category?: "research" | "news") {
         sourceUrl: r.source_url,
         publishedDate: r.published_date,
         category: r.category as "research" | "news",
+        createdAt: r.created_at,
       }));
     },
   });
