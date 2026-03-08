@@ -1,4 +1,5 @@
-import { LogIn, User, Heart, LogOut } from "lucide-react";
+import { LogIn, User, Heart, LogOut, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
