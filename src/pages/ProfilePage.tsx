@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { User, Heart, Utensils, Coffee, ChefHat, LogOut, FileText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
