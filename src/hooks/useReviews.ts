@@ -26,11 +26,9 @@ export function useReviews(restaurantId: string) {
       // Fetch profile names for each review
       const userIds = [...new Set(data.map((r) => r.user_id))];
       const { data: profiles } = await supabase
-        .from("profiles")
-        .select("id, display_name, avatar_url")
-        .in("id", userIds);
+        .rpc("get_display_profiles", { user_ids: userIds });
 
-      const profileMap = new Map(profiles?.map((p) => [p.id, p]) ?? []);
+      const profileMap = new Map(profiles?.map((p: any) => [p.id, p]) ?? []);
 
       return data.map((r): Review => ({
         id: r.id,

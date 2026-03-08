@@ -14,9 +14,14 @@ export function CommentSection({ restaurantId }: { restaurantId: string }) {
   const { mutate: addReview, isPending } = useAddReview();
   const [newComment, setNewComment] = useState("");
   const [rating, setRating] = useState(0);
+  const MAX_REVIEW_LENGTH = 2000;
 
   const handleSubmit = () => {
     if (!newComment.trim()) return;
+    if (newComment.trim().length > MAX_REVIEW_LENGTH) {
+      toast.error(`Review must be under ${MAX_REVIEW_LENGTH} characters.`);
+      return;
+    }
     if (!user) {
       toast("Please sign in to post a review 💛");
       return;
@@ -98,6 +103,7 @@ export function CommentSection({ restaurantId }: { restaurantId: string }) {
               placeholder="Share your experience..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
+              maxLength={MAX_REVIEW_LENGTH}
               className="min-h-[60px] flex-1"
             />
             <Button onClick={handleSubmit} disabled={isPending || !newComment.trim()} className="self-end">
