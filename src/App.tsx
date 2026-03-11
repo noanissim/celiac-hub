@@ -15,6 +15,7 @@ import CoffeeCartsMap from "./pages/CoffeeCartsMap";
 import ArticlesPage from "./pages/ArticlesPage";
 import RecipesPage from "./pages/RecipesPage";
 import ProfilePage from "./pages/ProfilePage";
+import LegalPage from "./pages/LegalPage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/research" element={<ArticlesPage />} />
               <Route path="/favorites" element={<ProfilePage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/legal" element={<LegalPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
