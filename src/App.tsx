@@ -15,6 +15,7 @@ import CoffeeCartsMap from "./pages/CoffeeCartsMap";
 import ArticlesPage from "./pages/ArticlesPage";
 import RecipesPage from "./pages/RecipesPage";
 import ProfilePage from "./pages/ProfilePage";
+import LegalPage from "./pages/LegalPage";
 
 const queryClient = new QueryClient();
 
