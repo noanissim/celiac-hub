@@ -5,7 +5,6 @@ import {
   Globe,
   ShoppingBag,
   FileText,
-  Heart,
   Home,
   User,
 } from "lucide-react";
@@ -35,7 +34,6 @@ const mainItems = [
 ];
 
 const userItems = [
-  { title: "Favorites", url: "/favorites", icon: Heart },
   { title: "Profile", url: "/profile", icon: User },
 ];
 

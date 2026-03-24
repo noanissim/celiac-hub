@@ -1,4 +1,36 @@
 
+-- Create recipes table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.recipes (
+  id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT,
+  category TEXT NOT NULL CHECK (category IN ('breakfast', 'main', 'dessert', 'snack', 'salad', 'soup')),
+  source_name TEXT,
+  source_url TEXT,
+  difficulty TEXT CHECK (difficulty IN ('easy', 'medium', 'hard')),
+  tags TEXT[] DEFAULT '{}',
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.recipes ENABLE ROW LEVEL SECURITY;
+
+DO $$ BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies WHERE tablename = 'recipes' AND policyname = 'Recipes are publicly readable'
+  ) THEN
+    CREATE POLICY "Recipes are publicly readable" ON public.recipes FOR SELECT USING (true);
+  END IF;
+END $$;
+
+DO $$ BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_trigger WHERE tgname = 'update_recipes_updated_at'
+  ) THEN
+    CREATE TRIGGER update_recipes_updated_at BEFORE UPDATE ON public.recipes FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
+  END IF;
+END $$;
+
 -- Delete all existing fake recipes
 DELETE FROM public.recipes;
 
