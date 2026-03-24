@@ -2,6 +2,14 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
 
+declare global {
+  interface Window {
+    pendo?: {
+      initialize: (options: Record<string, unknown>) => void;
+    };
+  }
+}
+
 interface Profile {
   id: string;
   displayName: string;
@@ -61,22 +69,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .eq("id", session.user.id)
         .single();
 
-      if (data) {
-        setProfile({
-          id: data.id,
-          displayName: data.display_name || session.user.user_metadata?.full_name || "",
-          avatarUrl: data.avatar_url || session.user.user_metadata?.avatar_url || "",
-          email: data.email || session.user.email || "",
-        });
-      } else {
-        // Profile may not exist yet (trigger delay), use metadata
-        setProfile({
-          id: session.user.id,
-          displayName: session.user.user_metadata?.full_name || "",
-          avatarUrl: session.user.user_metadata?.avatar_url || "",
-          email: session.user.email || "",
-        });
-      }
+      const resolvedProfile: Profile = data
+        ? {
+            id: data.id,
+            displayName: data.display_name || session.user.user_metadata?.full_name || "",
+            avatarUrl: data.avatar_url || session.user.user_metadata?.avatar_url || "",
+            email: data.email || session.user.email || "",
+          }
+        : {
+            // Profile may not exist yet (trigger delay), use metadata
+            id: session.user.id,
+            displayName: session.user.user_metadata?.full_name || "",
+            avatarUrl: session.user.user_metadata?.avatar_url || "",
+            email: session.user.email || "",
+          };
+
+      setProfile(resolvedProfile);
+
+      const nameParts = resolvedProfile.displayName.split(" ");
+      window.pendo?.initialize({
+        visitor: {
+          id: resolvedProfile.id,
+          email: resolvedProfile.email,
+          firstName: nameParts[0] || "",
+          lastName: nameParts.slice(1).join(" ") || "",
+        },
+        account: {
+          id: resolvedProfile.id,
+        },
+      });
+
       setLoading(false);
     };
     fetchProfile();
@@ -86,6 +108,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await supabase.auth.signOut();
     setSession(null);
     setProfile(null);
+    window.pendo?.initialize({ visitor: { id: "anonymous" }, account: { id: "anonymous" } });
   };
 
   return (
